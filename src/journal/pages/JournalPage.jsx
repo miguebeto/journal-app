@@ -8,9 +8,9 @@ export const JournalPage = () => {
     <JournalLayout>
       {/* <Typography>Sunt dolore anim consectetur labore fugiat labore. Consectetur nulla ullamco non veniam consequat velit fugiat ad occaecat nulla irure sint officia dolore. Lorem fugiat dolore officia sit sunt in Lorem et irure consectetur deserunt magna incididunt.</Typography> */}
       {/* NothinSelected */}
-      {/* <NothingSelectedView /> */}
+      <NothingSelectedView />
       {/* NoteView */}
-      <NoteView />
+      {/* <NoteView /> */}
       <IconButton
         size="large"
         sx={{
