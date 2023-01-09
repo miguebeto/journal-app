@@ -8,6 +8,10 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     createValidators();
   }, [formState]);
 
+  useEffect(() => {
+    setFormState(initialForm);
+  }, [initialForm]); //actualiza el formulario cuando el estado inicial cambia
+
   const onInputChange = ({ target }) => {
     const { name, value } = target;
     setFormState({
@@ -16,13 +20,13 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     });
   };
 
-  const isFormValid = useMemo(()=> {
-    for (const formValue of Object.keys( formValidation )) {
-        if( formValidation[formValue] !== null ) return false;
-        
-        return true;
+  const isFormValid = useMemo(() => {
+    for (const formValue of Object.keys(formValidation)) {
+      if (formValidation[formValue] !== null) return false;
+
+      return true;
     }
-  },[formValidation])
+  }, [formValidation]);
 
   const onResetForm = () => {
     setFormState(initialForm);
