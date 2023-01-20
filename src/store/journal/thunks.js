@@ -1,9 +1,4 @@
-import {
-  collection,
-  deleteDoc,
-  doc,
-  setDoc,
-} from "firebase/firestore/lite";
+import { collection, deleteDoc, doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
 import { loadNotes } from "../../helpers";
 import { fileUpload } from "../../helpers/fileUpload";
@@ -28,7 +23,6 @@ export const startNewNote = () => {
     const newNote = {
       title: "",
       body: "",
-      imageUrls: [],
       date: new Date().getTime(),
     };
 
@@ -91,6 +85,6 @@ export const startDeletingNote = () => {
     const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`); //referencia del documento en firebase
     await deleteDoc(docRef);
 
-    dispatch(deleteNoteById(note.id))
+    dispatch(deleteNoteById(note.id));
   };
 };

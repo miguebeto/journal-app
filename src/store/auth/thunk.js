@@ -7,7 +7,7 @@ import {
 import { clearNoteLogout } from "../journal";
 import { checkingCredentials, login, logout } from "./authSlice";
 
-export const chekingAuthentication = (email, password) => {
+export const chekingAuthentication = () => {
   return async (dispatch) => {
     dispatch(checkingCredentials());
   };
@@ -45,18 +45,16 @@ export const startCreatingUserWithEmailPassword = ({
 export const startLoginWithEmailPassword = ({
   email,
   password,
-  displayName,
 }) => {
   return async (dispatch) => {
     dispatch(checkingCredentials());
-    const { ok, uid, photoURL, errorMessage } = await loginWithEmailPassword({
+    const result = await loginWithEmailPassword({
       email,
       password,
-      displayName,
     });
-    if (!ok) return dispatch(logout({ errorMessage }));
+    if (!result.ok) return dispatch(logout({ result }));
 
-    dispatch(login({ uid, displayName, email, photoURL }));
+    dispatch(login(result));
   };
 };
 
